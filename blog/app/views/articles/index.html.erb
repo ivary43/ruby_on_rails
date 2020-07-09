@@ -5,18 +5,24 @@
         <tr>
             <th> Title </th>
             <th> Description </th>
-            <th> Actions </th>
+            <th colspan=3> Actions </th>
         </tr>
     </thead>
 
     <tbody>
         <% @articles.each do |article| %>
           <tr>
-            <th> <%=article.title %> </th>
+            <th> <%=article.title %> </th>  
             <th> <%=article.description %> </th>
-            <th> Work on progress</th>
+            <th> <%= link_to 'Show', article_path(article.id)%></th>
+            <th> <%= link_to 'Delete', article_path(article.id), method: :delete%></th>
+            <th> <%= link_to 'Edit', edit_article_path(article.id) %></th>
           </tr>
         <% end %>
     </tbody>
 
 </table>
+
+<p>
+<%= link_to 'Create new Article', new_article_path %>
+</p>
